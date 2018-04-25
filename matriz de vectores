@@ -1,0 +1,55 @@
+//Matrices
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define MAX 30
+using namespace std;
+
+struct vec{
+	int v[MAX];
+	};
+void cargarmatriz(vec M[MAX][MAX], int tamf, int tamc, int tamv);
+
+void mostrarmatriz(vec M[MAX][MAX], int tamf, int tamc, int tamv);
+void main ()
+{
+	vec MAT[MAX][MAX];
+	int tamv,tamf,tamc;
+	do {
+		cout<<"Ingresar el tamaño del vector interno: ";
+		cin>>tamv;
+	}while ((tamv>MAX) || (tamv<=0));
+	
+	do {
+		cout<<"Ingresar el numero de filas: ";
+		cin>>tamf;
+	}while ((tamf>MAX) || (tamf<=0));
+	
+	do {
+		cout<<"Ingresar el numero de columnas: ";
+		cin>>tamc;
+	}while ((tamc>MAX) || (tamc<=0));
+	cargarmatriz(MAT,tamf,tamc,tamv);
+	mostrarmatriz(MAT,tamf,tamc,tamv);
+	getch();
+}
+void cargarmatriz (vec M[MAX][MAX], int tamf, int tamc, int tamv)
+{
+	for (int i=0;i<tamf;i++)
+		for (int j=0;j<tamc;j++)
+			for (int k=0;k<tamv;k++)
+			{
+				cout<<"M["<<i<<"]["<<j<<"].["<<k<<"]= ";
+				cin>> M[i][j].v[k];
+			}
+}
+void mostrarmatriz (vec M[MAX][MAX], int tamf, int tamc, int tamv)
+{
+	for (int i=0;i<tamf;i++)
+		for (int j=0;j<tamc;j++)
+			for (int k=0;k<tamv;k++)
+			{
+				cout<<"M["<<i<<"]["<<j<<"].["<<k<<"]= ";
+				cout<< M[i][j].v[k]<<" ";
+			}
+}
