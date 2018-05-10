@@ -1,0 +1,63 @@
+// examenej1.cpp : Defines the entry point for the console application.
+//en una matriz c de mx7 se encuentra almacenadas las ventas por producto de maximo 7 sucursales de un grupo de m productos. el codigo y la descripcion de los productos se encuentran almacenados en un vector x de m productos,
+//elaborar un programa en c++ que permita calcular e imprimir los siguientees resultados.
+//determinar los productos que mas se venden en cada sucursal
+//la cantidad total de productos vendidos en cada sucursal, indicando el codigo y la descripciomn
+//elproducto mas vendido de todas la sucursales
+//
+
+#include "stdafx.h"
+#include <conio.h>
+#include <iostream>
+#include <string>
+#define max 100
+using namespace std;
+
+struct vec
+{
+	float codigo;
+	string descripcion;
+};
+
+void cargarvector (int M, vec x[]); // los vectores funcionan con o sin max.
+void cargarmatriz(int M, float mat[max][max]);   // las matrices necesitan max en declaracion.
+
+int main()
+{
+	int M;
+	float matriz[max][max];
+	vec ventas[max];
+	do
+	{
+	cout<<"Cantidad de tipos de Productos: ";
+	cin>>M;
+	}while ((M<=0) || (M>max));
+
+	cargarvector(M, ventas); // cuando llamo en main, no utilizo corchetes, por que envio todo el vector.
+	cargarmatriz(M, matriz);
+	getch();
+	return 0;
+}
+
+void cargarvector (int M, vec x[]) // descubri que para cargar el vector recibido, va a tener el nombre del prototipo y no su nombre en main.
+{
+	for (int i=0;i<M;i++)
+	{
+		cout<<"Ingrese el Codigo del producto ["<<i<<"]: ";
+		cin>>x[i].codigo;
+		cout<<"Ingrese Descripcion del producto ["<<i<<"]: ";
+		cin.ignore();
+		getline(cin,x[i].descripcion);
+	}
+}
+void cargarmatriz (int M, float matriz[max][max])
+{
+	for (int i=0;i<M;i++)
+		for (int j=0;j<7;j++)
+	{
+		cout<<"Ingrese  ["<<i<<"]: ";
+		cin>>matriz[i][j];
+		cout<<"Ingrese Descripcion del producto ["<<i<<"]: ";
+		cin>>ventas[i].descripcion;
+	}
+}
